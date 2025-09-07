@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Submit Claim";
+}
+
+
+<div style="text-align: center; color: #f5f5dc; padding: 40px; max-width: 700px; margin: auto;">
+
+    <!-- Page heading -->
+    <h2>Submit a New Claim</h2>
+    <p>Please complete the form below to submit your monthly claim.</p>
+
+    <!-- Claim submission form -->
+    <form method="post" action="/Home/SubmitClaim" enctype="multipart/form-data">
+
+        <!-- Row 1: Course Name and Module Name -->
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <div style="flex: 0 0 48%;">
+                <label for="courseName" style="color: #f5f5dc;">Course Name:</label><br />
+                <input type="text" name="courseName" id="courseName" style="width: 100%; height: 30px;" />
+            </div>
+
+            <div style="flex: 0 0 48%;">
+                <label for="moduleName" style="color: #f5f5dc;">Module Name:</label><br />
+                <input type="text" name="moduleName" id="moduleName" style="width: 100%; height: 30px;" />
+            </div>
+        </div>
+
+        <!-- Row 2: Hours Worked and Total Amount -->
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <div style="flex: 0 0 48%;">
+                <label for="hoursWorked" style="color: #f5f5dc;">Hours Worked:</label><br />
+                <input type="number" name="hoursWorked" id="hoursWorked" style="width: 100%; height: 30px;" />
+            </div>
+
+            <div style="flex: 0 0 48%;">
+                <label for="totalAmount" style="color: #f5f5dc;">Total Amount (R):</label><br />
+                <input type="number" name="totalAmount" id="totalAmount" style="width: 100%; height: 30px;" />
+            </div>
+        </div>
+
+        <!-- Row 3: Upload Supporting Document -->
+        <div style="margin-bottom: 30px;">
+            <label for="supportDoc" style="color: #f5f5dc;">Upload Supporting Document:</label><br />
+            <input type="file" name="supportDoc" id="supportDoc" style="width: 100%; height: 30px;" />
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" style="background-color: #eec6d3; color: black; padding: 10px 20px;">Submit Claim</button>
+    </form>
+
+    
+</div>

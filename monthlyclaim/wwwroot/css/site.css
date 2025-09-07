@@ -1,0 +1,40 @@
+/* site.css */
+
+/* Base styling */
+body {
+    background-color: slategray; 
+    color: black;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Ensures full viewport height */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header styling */
+header {
+    background-color: dimgray; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Navigation bar styling */
+nav {
+    background-color: gray; 
+    padding: 10px;
+}
+
+/* Main content area */
+main {
+    flex: 1; /* Allows main content to grow and push footer down */
+    padding: 20px;
+}
+
+/* Footer styling */
+footer {
+    background-color: dimgray; /* Matches header */
+    text-align: center;
+    padding: 15px;
+}

@@ -1,0 +1,75 @@
+﻿@model List<monthlyclaim.Models.Manager>
+@{
+    ViewData["Title"] = "Academic Manager Dashboard";
+    var managerName = ViewBag.ManagerName ?? "Academic Manager";
+    var pendingFinals = Model.Where(c => c.Status == "Pending").ToList();
+    var approvedFinals = Model.Where(c => c.Status == "Approved").ToList();
+}
+
+<div style="text-align: center; color: #3e3e3e; padding: 40px; max-width: 1000px; margin: auto;">
+
+    <h2>Welcome @managerName</h2>
+
+    <p>
+        You are now at the <strong>final stage</strong> of the claim verification process.
+        As the Academic Manager, your role is to provide final approval or rejection of verified claims submitted by Programme Coordinators.
+    </p>
+
+    <br />
+
+    <!-- Final Approval Table -->
+    <h3>Claims Awaiting Final Approval</h3>
+    <table style="width: 100%; border-collapse: collapse;">
+        <thead style="background-color: #c2b9b0; color: black;">
+            <tr>
+                <th>Lecturer Name</th>
+                <th>Submission Date</th>
+                <th>Total Amount (R)</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody style="background-color: #f5f5dc; color: black;">
+            @foreach (var claim in pendingFinals)
+            {
+                <tr>
+                    <td>@claim.LecturerName</td>
+                    <td>@claim.SubmissionDate.ToString("dd MMM yyyy")</td>
+                    <td>@claim.TotalAmount</td>
+                    <td>@claim.Status</td>
+                    <td>
+                        <button style="background-color: #b4d7b4; color: black; padding: 5px 10px; border: none;">Final Approve</button>
+                        <button style="background-color: #eec6d3; color: black; padding: 5px 10px; border: none;">Reject</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <br /><br />
+
+    <!-- Approved Claims Table -->
+    <h3>Finalised Claims</h3>
+    <table style="width: 100%; border-collapse: collapse;">
+        <thead style="background-color: #b4d7b4; color: black;">
+            <tr>
+                <th>Lecturer Name</th>
+                <th>Submission Date</th>
+                <th>Total Amount (R)</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody style="background-color: #f5f5dc; color: black;">
+            @foreach (var claim in approvedFinals)
+            {
+                <tr>
+                    <td>@claim.LecturerName</td>
+                    <td>@claim.SubmissionDate.ToString("dd MMM yyyy")</td>
+                    <td>@claim.TotalAmount</td>
+                    <td>@claim.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

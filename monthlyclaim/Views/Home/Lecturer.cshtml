@@ -1,0 +1,58 @@
+﻿@model monthlyclaim.Models.Lecturer
+
+
+@{
+    ViewData["Title"] = "Lecturer Dashboard";
+}
+
+<div style="text-align: center; color: #f5f5dc; padding: 40px; max-width: 900px; margin: auto;">
+    <h2>Hi Lecturer @Model.Name!</h2>
+
+
+    <p>Welcome to your dashboard. You can submit claims, upload documents, and track your status.</p>
+
+    <!-- Action buttons for claim submission and tracking -->
+    <form method="get" action="/Home/SubmitClaim" style="display: inline;">
+        <button type="submit" style="background-color: #eec6d3; color: black; padding: 10px 20px; margin-right: 20px;">Submit Claim</button>
+    </form>
+
+    <form method="get" action="/Home/TrackClaim" style="display: inline;">
+        <button type="submit" style="background-color: #eec6d3; color: black; padding: 10px 20px;">Track Claim</button>
+    </form>
+
+
+    <br /><br />
+
+    <label for="supportDocs">Upload Supporting Documents:</label><br />
+    <input type="file" id="supportDocs" name="supportDocs" disabled /><br />
+    
+
+    <br />
+
+    <h3>Your Claim Summary</h3>
+    <table style="width: 100%; border-collapse: collapse;">
+        <thead style="background-color: #eec6d3; color: black;">
+            <tr>
+                <th>Lecturer ID</th>
+                <th>Course Name</th>
+                <th>Module Name</th>
+                <th>Hours Worked</th>
+                <th>Total Amount</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody style="background-color: #f5f5dc; color: black;">
+        <tbody style="background-color: #f5f5dc; color: black;">
+            <tr>
+                <td>@Model.LecturerId</td>
+                <td>@Model.CourseName</td>
+                <td>@Model.ModuleName</td>
+                <td>@Model.HoursWorked</td>
+                <td>@Model.TotalAmount</td>
+                <td>@Model.Status</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+

@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    var message = TempData["WelcomeMessage"] as string;
+}
+
+<div style="text-align: center; color: #f5f5dc; padding: 40px; max-width: 600px; margin: auto;">
+    @if (!string.IsNullOrEmpty(message))
+    {
+        <h3>@message</h3>
+    }
+
+    <h2>Login</h2>
+
+    <form method="post" action="/Home/Login">
+        <!-- Username input field -->
+        <label for="username" style="color: #f5f5dc;">Username:</label><br />
+        <input type="text" name="username" id="username" style="width: 300px; height: 20px;" /><br /><br />
+
+
+
+        <!-- Password input field -->
+        <label for="password" style="color: #f5f5dc;">Password:</label><br />
+        <input type="password" name="password" id="password" style="width: 300px; height: 25px;" /><br /><br />
+
+        
+        <!-- Role selection dropdown -->
+        <label for="role" style="color: #f5f5dc;">Role:</label><br />
+        <select name="role" id="role" required style="width: 300px; height: 25px;">
+            <option value="Lecturer">Lecturer</option>
+            <option value="Coordinator">Programme Coordinator</option>
+            <option value="Manager">Academic Manager</option>
+        </select><br /><br />
+        <button type="submit" style="background-color: #eec6d3; color: black;">Login</button>
+    </form>
+</div>

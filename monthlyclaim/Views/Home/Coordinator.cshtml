@@ -1,0 +1,101 @@
+﻿   @model List<monthlyclaim.Models.Coordinator>
+@{
+    ViewData["Title"] = "Programme Coordinator Dashboard";
+    var coordinatorName = ViewBag.CoordinatorName ?? "Coordinator";
+    var pendingClaims = Model.Where(c => c.Status == "Pending").ToList();
+    var approvedClaims = Model.Where(c => c.Status == "Approved").ToList();
+}
+
+<div style="text-align: center; color: #3e3e3e; padding: 40px; max-width: 1000px; margin: auto;">
+    <h2>Welcome Programme Coordinator @coordinatorName!</h2>
+
+    <p>
+        This dashboard allows you to verify and approve claims submitted by Independent Contractor lecturers.
+        You have the authority to review all pending claims and take action based on the provided documentation.
+    </p>
+
+    <br />
+
+    <!-- Pending Claims Table -->
+    <h3>Pending Claims for Verification</h3>
+    <table style="width: 100%; border-collapse: collapse;">
+        <thead style="background-color: #c2b9b0; color: black;">
+            <tr>
+                <th>Claim ID</th>
+                <th>Lecturer ID</th>
+                <th>Module ID</th>
+                <th>Lecturer Name</th>
+                <th>Course</th>
+                <th>Module</th>
+                <th>Hours</th>
+                <th>Total (R)</th>
+                <th>Submitted</th>
+                <th>Close Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody style="background-color: #f5f5dc; color: black;">
+            @foreach (var claim in pendingClaims)
+            {
+                <tr>
+                    <td>@claim.ClaimId.ToString("D3")</td>
+                    <td>@claim.LecturerId</td>
+                    <td>@claim.ModuleId</td>
+                    <td>@claim.LecturerName</td>
+                    <td>@claim.CourseName</td>
+                    <td>@claim.ModuleName</td>
+                    <td>@claim.HoursWorked</td>
+                    <td>@claim.TotalAmount</td>
+                    <td>@claim.SubmissionDate.ToString("dd MMM yyyy")</td>
+                    <td>@claim.CloseDate.ToString("dd MMM yyyy")</td>
+                    <td>@claim.Status</td>
+                    <td>
+                        <button style="background-color: #b4d7b4; color: black; padding: 5px 10px; border: none;">Approve</button>
+                        <button style="background-color: #eec6d3; color: black; padding: 5px 10px; border: none;">Reject</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <br /><br />
+
+    <!-- Approved Claims Table -->
+    <h3>Approved Claims</h3>
+    <table style="width: 100%; border-collapse: collapse;">
+        <thead style="background-color: #b4d7b4; color: black;">
+            <tr>
+                <th>Claim ID</th>
+                <th>Lecturer ID</th>
+                <th>Module ID</th>
+                <th>Lecturer Name</th>
+                <th>Course</th>
+                <th>Module</th>
+                <th>Hours</th>
+                <th>Total (R)</th>
+                <th>Submitted</th>
+                <th>Close Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody style="background-color: #f5f5dc; color: black;">
+            @foreach (var claim in approvedClaims)
+            {
+                <tr>
+                    <td>@claim.ClaimId.ToString("D3")</td>
+                    <td>@claim.LecturerId</td>
+                    <td>@claim.ModuleId</td>
+                    <td>@claim.LecturerName</td>
+                    <td>@claim.CourseName</td>
+                    <td>@claim.ModuleName</td>
+                    <td>@claim.HoursWorked</td>
+                    <td>@claim.TotalAmount</td>
+                    <td>@claim.SubmissionDate.ToString("dd MMM yyyy")</td>
+                    <td>@claim.CloseDate.ToString("dd MMM yyyy")</td>
+                    <td>@claim.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
